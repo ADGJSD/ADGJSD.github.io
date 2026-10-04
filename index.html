@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Jialin Li, Computer Science undergraduate at SUSTech, working with iMED Lab and HKUST. Interests in computer vision, medical image analysis, and world-model dynamics.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Jialin Li | Computer Vision, Medical Image Analysis &amp; World Models</title>
+  <link rel="icon" type="image/svg+xml" href="./icons/bird.svg?v=20261004-side">
+  <style>
+    html { color-scheme: light; background: #ffffff; }
+    body { margin: 0; background: #ffffff; }
+    #jialin-homepage { max-width: 1280px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+<style>
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/roboto-regular.woff2") format("woff2");
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/roboto-bold.woff2") format("woff2");
+  font-style: normal; font-weight: 700; font-display: swap;
+}
+#jialin-homepage { --jl-accent: #B51F35; --jl-space: 1; --jl-name-size: 56px; }
+#jialin-homepage .homepage {
+  color-scheme: light;
+  --paper: #ffffff; --ink: #000000; --gutter: 24px;
+  box-sizing: border-box;
+  width: 100%; max-width: 1048px; margin-inline: auto;
+  padding: 36px clamp(32px, 7vw, 64px) 32px;
+  background: var(--paper); color: var(--ink);
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 15px; line-height: 1.6; font-weight: 400;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+}
+#jialin-homepage .homepage * { box-sizing: border-box; }
+#jialin-homepage .homepage h1, #jialin-homepage .homepage h2,
+#jialin-homepage .homepage h3, #jialin-homepage .homepage p,
+#jialin-homepage .homepage figure { margin: 0; }
+#jialin-homepage .homepage strong { font-weight: 700; }
+#jialin-homepage a, #jialin-homepage button { color: var(--ink); text-decoration: none; }
+#jialin-homepage a { text-underline-offset: 4px; text-decoration-thickness: 1px; }
+#jialin-homepage a:hover { color: var(--jl-accent); text-decoration: underline; }
+#jialin-homepage button { padding: 0; border: 0; background: transparent; font: inherit; text-align: left; }
+#jialin-homepage .topbar, #jialin-homepage .hero,
+#jialin-homepage .section-heading, #jialin-homepage .work,
+#jialin-homepage .timeline-row, #jialin-homepage .honor,
+#jialin-homepage .footer {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+#jialin-homepage .topbar { align-items: baseline; font-size: 13px; }
+#jialin-homepage .wordmark { grid-column: 1 / 4; font-weight: 700; }
+#jialin-homepage .top-meta { grid-column: 5 / 7; }
+#jialin-homepage .navigation { grid-column: 5 / 13; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 28px; }
+#jialin-homepage .hero { align-items: start; margin: calc(32px * var(--jl-space)) 0 calc(52px * var(--jl-space)); }
+#jialin-homepage .portrait { grid-column: 1 / 4; width: 100%; padding-top: 8px; }
+#jialin-homepage .portrait-space { aspect-ratio: 4 / 5; background: var(--paper); border: 1px solid var(--ink); overflow: hidden; }
+#jialin-homepage .portrait-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+#jialin-homepage .portrait-label { font-size: 12px; font-weight: 700; line-height: 1.5; }
+#jialin-homepage .portrait-size { font-size: 12px; }
+#jialin-homepage .portrait figcaption { display: none; }
+#jialin-homepage .hero-copy { grid-column: 5 / 13; display: grid; grid-template-columns: subgrid; row-gap: 14px; min-width: 0; }
+#jialin-homepage .hero h1 { grid-column: 1 / -1; font-size: clamp(44px, 5.5vw, var(--jl-name-size)); font-weight: 700; line-height: 1.08; letter-spacing: -.03em; }
+#jialin-homepage .name-dot { color: var(--jl-accent); }
+#jialin-homepage .research-focus { grid-column: 1 / -1; margin-top: 8px !important; font-size: 15px; font-weight: 700; }
+#jialin-homepage .bio { grid-column: 1 / -1; font-size: 15px; line-height: 1.65; }
+#jialin-homepage .bio p + p { margin-top: 13px; }
+#jialin-homepage .bio a { text-decoration: underline; }
+#jialin-homepage .bio .advisor-link { color: var(--jl-accent); text-decoration: none; }
+#jialin-homepage .bio .advisor-link:hover { text-decoration: underline; }
+#jialin-homepage .profile-links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 16px; font-size: 13px; }
+#jialin-homepage .profile-links a { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
+#jialin-homepage .link-icon { display: block; width: 16px; height: 16px; flex: 0 0 16px; }
+#jialin-homepage .research, #jialin-homepage .honors { border-top: 1px solid var(--ink); }
+#jialin-homepage .section-heading { align-items: baseline; padding: 24px 0 22px; }
+#jialin-homepage .section-heading h2 { grid-column: 1 / -1; font-size: clamp(26px, 3vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: -.02em; }
+#jialin-homepage .work { align-items: start; padding: calc(24px * var(--jl-space)) 0 calc(36px * var(--jl-space)); }
+#jialin-homepage .research-image { grid-column: 1 / 5; min-width: 0; }
+#jialin-homepage .paper-image, #jialin-homepage .detail-figure img { display: block; width: 100%; height: auto; }
+#jialin-homepage .paper-frame { width: 100%; aspect-ratio: 8 / 5; display: flex; align-items: center; }
+#jialin-homepage .paper-frame .paper-image { width: 100%; height: 100%; object-fit: cover; }
+#jialin-homepage .paper-frame [data-source-figure="jialin-anatomy-figure"] { object-position: right; }
+#jialin-homepage .paper-frame [data-source-figure="jialin-dvia-figure"],
+#jialin-homepage .paper-frame [data-source-figure="jialin-obu-figure"] { object-position: left; }
+#jialin-homepage .detail-figure { margin: 20px 0 !important; }
+#jialin-homepage .detail-figure figcaption { font-size: 12px; margin-top: 9px; }
+#jialin-homepage .schematic { width: 100%; background: var(--paper); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+#jialin-homepage .schematic svg { display: block; width: 100%; height: auto; }
+#jialin-homepage .geo-line { stroke: var(--ink); stroke-width: 1; fill: none; }
+#jialin-homepage .geo-outline { stroke: var(--ink); stroke-width: 1; fill: var(--paper); }
+#jialin-homepage .geo-black { fill: var(--ink); }
+#jialin-homepage .geo-accent { fill: var(--jl-accent); }
+#jialin-homepage .research-image figcaption { margin-top: 13px; font-size: 12px; }
+#jialin-homepage .research-image figcaption span:first-child { font-weight: 700; }
+#jialin-homepage .work-body { grid-column: 5 / 13; display: grid; grid-template-columns: subgrid; row-gap: 14px; min-width: 0; }
+#jialin-homepage .publication { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: start; font-size: 13px; }
+#jialin-homepage .venue { grid-column: 1 / -1; color: var(--jl-accent); }
+#jialin-homepage .role { grid-column: 3 / -1; font-weight: 700; }
+#jialin-homepage .work h3 { grid-column: 1 / -1; font-size: 22px; font-weight: 700; line-height: 1.3; letter-spacing: -.015em; }
+#jialin-homepage .work-title { grid-column: 1 / -1; font-size: 15px; line-height: 1.6; }
+#jialin-homepage .authors { grid-column: 1 / -1; font-size: 13px; line-height: 1.6; }
+#jialin-homepage .author-note { grid-column: 1 / -1; font-size: 12px; margin-top: -7px !important; }
+#jialin-homepage .contribution { grid-column: 1 / 7; margin-top: 2px !important; font-size: 15px; line-height: 1.6; }
+#jialin-homepage .work-actions { grid-column: 1 / 5; display: grid; grid-template-columns: subgrid; margin-top: 4px; font-size: 13px; }
+#jialin-homepage .work-actions > a { grid-column: span 1; }
+#jialin-homepage .work-actions > .details-toggle { grid-column: span 2; }
+#jialin-homepage .work-actions > a + .details-toggle { margin-left: 12px; }
+#jialin-homepage .work-actions a, #jialin-homepage .details-toggle { font-weight: 700; }
+#jialin-homepage .details-toggle { display: inline-flex; align-items: center; gap: 8px; }
+#jialin-homepage .toggle-mark { display: inline-block; transition: transform 220ms ease; }
+#jialin-homepage .details-toggle[aria-expanded="true"] .toggle-mark { transform: rotate(45deg); }
+#jialin-homepage .details-panel { grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; transition: grid-template-rows 280ms cubic-bezier(.22, 1, .36, 1); }
+#jialin-homepage .details-panel.open { grid-template-rows: 1fr; }
+#jialin-homepage .details-inner { overflow: hidden; min-height: 0; }
+#jialin-homepage .details-copy { padding-top: 12px; font-size: 15px; }
+#jialin-homepage .details-copy p + p { margin-top: 12px; }
+#jialin-homepage .secondary h3 { font-size: 22px; }
+#jialin-homepage .experience { margin-top: calc(48px * var(--jl-space)); }
+#jialin-homepage .timeline-row { align-items: start; padding: 22px 0 28px; }
+#jialin-homepage .timeline-date { grid-column: 1 / 4; font-size: 13px; }
+#jialin-homepage .timeline-body { grid-column: 5 / 13; display: grid; grid-template-columns: subgrid; row-gap: 10px; }
+#jialin-homepage .timeline-body h3 { grid-column: 1 / -1; font-size: 20px; font-weight: 700; line-height: 1.25; letter-spacing: -.015em; }
+#jialin-homepage .timeline-body p { grid-column: 1 / 7; font-size: 15px; }
+#jialin-homepage .honors { margin-top: calc(48px * var(--jl-space)); }
+#jialin-homepage .honor { align-items: start; padding: 13px 0; }
+#jialin-homepage .honor span { grid-column: 5 / 13; grid-row: 1; font-size: 15px; }
+#jialin-homepage .honor time { grid-column: 1 / 4; grid-row: 1; font-size: 13px; }
+#jialin-homepage .honor-body { grid-column: 5 / 13; grid-row: 1; display: grid; grid-template-columns: subgrid; row-gap: 8px; min-width: 0; }
+#jialin-homepage .honor-body h3 { grid-column: 1 / -1; font-size: 17px; font-weight: 700; line-height: 1.4; }
+#jialin-homepage .honor-body p { grid-column: 1 / -1; font-size: 14px; }
+#jialin-homepage .honor-detail { font-size: 13px !important; }
+#jialin-homepage .footer { align-items: baseline; row-gap: 12px; margin-top: calc(56px * var(--jl-space)); padding-top: 17px; border-top: 1px solid var(--ink); font-size: 13px; }
+#jialin-homepage .footer > span { grid-column: 1 / 4; }
+#jialin-homepage .footer > a { grid-column: 5 / 13; overflow-wrap: anywhere; color: var(--jl-accent); }
+@media (max-width: 1000px) {
+  #jialin-homepage .homepage { --gutter: 16px; }
+  #jialin-homepage .bio { grid-column: 1 / -1; }
+  #jialin-homepage .contribution { grid-column: 1 / 7; }
+}
+@media (max-width: 700px) {
+  #jialin-homepage .homepage { padding: 26px 24px; --gutter: 12px; }
+  #jialin-homepage .topbar { align-items: center; }
+  #jialin-homepage .wordmark { grid-column: 1 / 4; }
+  #jialin-homepage .top-meta { grid-column: 7 / 13; }
+  #jialin-homepage .navigation { grid-column: 5 / -1; gap: 8px 14px; font-size: 12px; }
+  #jialin-homepage .hero { row-gap: 28px; margin: 32px 0 44px; }
+  #jialin-homepage .portrait { grid-column: 1 / 7; max-width: 212px; padding-top: 0; }
+  #jialin-homepage .hero-copy { grid-column: 1 / -1; row-gap: 16px; }
+  #jialin-homepage .hero h1 { font-size: clamp(38px, 9vw, 48px); }
+  #jialin-homepage .research-focus { grid-column: 1 / -1; }
+  #jialin-homepage .bio { grid-column: 1 / 11; }
+  #jialin-homepage .profile-links { gap: 20px; margin-top: 14px; }
+  #jialin-homepage .section-heading h2 { font-size: 26px; }
+  #jialin-homepage .work { row-gap: 24px; padding: 26px 0 32px; }
+  #jialin-homepage .research-image { grid-column: 1 / -1; }
+  #jialin-homepage .work-body { grid-column: 1 / -1; }
+  #jialin-homepage .venue { grid-column: 1 / -1; }
+  #jialin-homepage .role { grid-column: 8 / -1; }
+  #jialin-homepage .work h3, #jialin-homepage .secondary h3 { font-size: 21px; }
+  #jialin-homepage .work-title, #jialin-homepage .authors { grid-column: 1 / -1; }
+  #jialin-homepage .contribution { grid-column: 1 / 11; }
+  #jialin-homepage .work-actions { grid-column: 1 / 9; }
+  #jialin-homepage .work-actions > a { grid-column: span 2; }
+  #jialin-homepage .work-actions > .details-toggle { grid-column: span 4; }
+  #jialin-homepage .details-panel { grid-column: 1 / -1; }
+  #jialin-homepage .timeline-row { row-gap: 12px; }
+  #jialin-homepage .timeline-date { grid-column: 1 / -1; }
+  #jialin-homepage .timeline-body { grid-column: 1 / -1; }
+  #jialin-homepage .timeline-body p { grid-column: 1 / 11; }
+  #jialin-homepage .honor { row-gap: 7px; }
+  #jialin-homepage .honor time { grid-column: 1 / -1; grid-row: 1; }
+  #jialin-homepage .honor span { grid-column: 1 / -1; grid-row: 2; }
+  #jialin-homepage .honor-body { grid-column: 1 / -1; grid-row: 2; }
+  #jialin-homepage .footer > span, #jialin-homepage .footer > a { grid-column: 1 / -1; }
+}
+@media (max-width: 400px) {
+  #jialin-homepage .homepage { padding: 22px 20px; --gutter: 8px; }
+  #jialin-homepage .bio, #jialin-homepage .contribution,
+  #jialin-homepage .timeline-body p { grid-column: 1 / -1; }
+  #jialin-homepage .secondary h3 { overflow-wrap: anywhere; }
+}
+@media (pointer: coarse) {
+  #jialin-homepage .navigation a, #jialin-homepage .profile-links a,
+  #jialin-homepage .work-actions a, #jialin-homepage button { min-height: 44px; display: inline-flex; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #jialin-homepage .details-panel, #jialin-homepage .toggle-mark { transition: none; }
+}
+
+</style>
+<div id="jialin-homepage" aria-label="Jialin Li academic homepage">
+  <main class="homepage">
+    <div class="topbar"><span class="wordmark">Jialin Li</span><nav class="navigation" aria-label="Main navigation"><a href="#jialin-research">Research</a><a href="#jialin-honors">Honors</a><a href="mailto:12311313@mail.sustech.edu.cn">Contact</a></nav></div>
+    <header class="hero">
+      <figure class="portrait" aria-label="Portrait of Jialin Li"><div class="portrait-space"><img class="portrait-photo" alt="Jialin Li" width="480" height="454" decoding="async" src="./images/portrait-white.webp"></div><div class="profile-links"><a href="mailto:12311313@mail.sustech.edu.cn"><img class="link-icon" src="./icons/mail.svg" alt="" aria-hidden="true" width="16" height="16"><span>Email</span></a><a class="cv-download" href="./cv.pdf" download="Jialin-Li-CV.pdf"><img class="link-icon" src="./icons/file-text.svg" alt="" aria-hidden="true" width="16" height="16"><span>CV</span></a></div><figcaption></figcaption></figure>
+      <div class="hero-copy">
+        <h1>Jialin Li<span class="name-dot">.</span></h1>
+        
+        <p class="research-focus">Computer vision · Medical image analysis · World models.</p>
+        <div class="bio">
+<p>I am an undergraduate in Computer Science and Technology at the <strong>Southern University of Science and Technology (SUSTech)</strong>. I work with <a class="advisor-link" href="https://faculty.sustech.edu.cn/liuj/en/" target="_blank" rel="noopener noreferrer">Prof. Jiang Liu</a> at <a href="https://www.imed-lab.com/" target="_blank" rel="noopener noreferrer">iMED Lab</a>, and am a remote research intern with <a class="advisor-link" href="https://ece.hkust.edu.hk/eexmli" target="_blank" rel="noopener noreferrer">Prof. Xiaomeng Li</a> at the Hong Kong University of Science and Technology (HKUST).</p>
+<p>I am currently interested in world models, particularly learning representations of dynamics and predicting how the physical world evolves.</p>
+</div>
+        
+      </div>
+    </header>
+    <section class="research" id="jialin-research" aria-labelledby="jialin-research-heading"><div class="section-heading"><h2 id="jialin-research-heading">Selected research</h2></div><article class="work featured"><figure class="research-image"><div class="paper-frame"><img class="paper-image" data-source-figure="jialin-scl-figure" alt="SCL-Net framework coupling video-based iris motion with local angle anatomy through gated representation queries and adaptive decision weighting." width="840" decoding="async" src="./images/scl-thumb.webp"></div><figcaption><span>SCL-Net</span></figcaption></figure><div class="work-body"><div class="publication"><span class="venue">IEEE BIBM 2026 · Accepted</span></div><h3>Spatiotemporal Collaborative Learning for Angle-Closure Progression Assessment Using Dynamic AS-OCT Videos</h3><p class="authors">Yinglin Zhang, <strong>Jialin Li</strong>, Lingxi Zeng, Hengquan Guo, Risa Higashita, and Jiang Liu</p><div class="work-actions"><button class="details-toggle cursor-interaction" type="button" aria-expanded="false" aria-controls="jialin-scl-details">Details <span class="toggle-mark" aria-hidden="true">+</span></button></div><div class="details-panel" id="jialin-scl-details" inert><div class="details-inner"><div class="details-copy"><p>SCL-Net couples iris-motion representations from a video foundation model with local angle structures through bidirectional gated queries and adaptive decision fusion.</p><figure class="detail-figure"><img id="jialin-scl-figure" alt="SCL-Net framework coupling video-based iris motion with local angle anatomy through gated representation queries and adaptive decision weighting." width="1600" decoding="async" src="./images/scl-detail.webp"></figure><p>Evaluated on a dataset of 1,308 half-angle videos from 206 subjects (327 eyes), with eye-level train/validation/test separation. SCL-Net achieved 85.6% balanced accuracy on the 256-video, three-class test set.</p></div></div></div></div></article><article class="work secondary"><figure class="research-image"><div class="paper-frame"><img class="paper-image" data-source-figure="jialin-anatomy-figure" alt="APSevo warped source, predicted anatomy, and prediction/target region-of-interest comparisons across three medical prediction tasks." width="840" decoding="async" src="./images/anatomy-thumb.webp"></div><figcaption><span>APSevo</span></figcaption></figure><div class="work-body"><div class="publication"><span class="venue">IEEE TPAMI · Under review</span></div><h3>Anatomy-Preserving Structural Evolution Modeling for Physically Plausible Medical Image Prediction</h3><p class="authors">Yinglin Zhang, Xiangyun Zheng, Jingtian Huang, <strong>Jialin Li</strong>, Risa Higashita, Keiichiro Okamoto, Kazutaka Kamiya, Kazunori Miyata, Akihito Igarashi, Seiichiro Hata, Tomoaki Nakamura, and Jiang Liu</p><div class="work-actions"><button class="details-toggle cursor-interaction" type="button" aria-expanded="false" aria-controls="jialin-anatomy-details">Details <span class="toggle-mark" aria-hidden="true">+</span></button></div><div class="details-panel" id="jialin-anatomy-details" inert><div class="details-inner"><div class="details-copy"><p>APSevo couples Hierarchical Structural Evolution (HSE) learning with Anatomy-Preserving Representation Transport (APT) and Change-Aware Detail (CAD) preservation to predict target anatomical states.</p><figure class="detail-figure"><img id="jialin-anatomy-figure" alt="APSevo source, target, deformation field, velocity, warped source, prediction, and regions of interest across ICL, cardiac, and retinal prediction tasks." width="1600" decoding="async" src="./images/anatomy-detail.webp"></figure><p>The manuscript evaluates three prediction tasks: ICL postoperative prediction, retinal treatment-response prediction, and cardiac motion prediction.</p></div></div></div></div></article><article class="work secondary"><figure class="research-image"><div class="paper-frame"><img class="paper-image" data-source-figure="jialin-dvia-figure" alt="Dark and light AS-OCT views of open and appositional anterior chamber angles from DVIA-Net." width="840" decoding="async" src="./images/dvia-thumb.webp"></div><figcaption><span>DVIA-Net</span></figcaption></figure><div class="work-body"><div class="publication"><span class="venue">MICCAI OMIA 2025</span></div><h3>DVIA-Net: Dual-path Video Information Aggregation Network for Anterior Chamber Angle Analysis</h3><p class="authors">Lingxi Zeng, Yinglin Zhang, <strong>Jialin Li</strong>, Xiaoli Xing, Lingxi Hu, Chenglin Yao, Tianhang Liu, Yi Yue, Zunjie Xiao, Chen Lin, Risa Higashita, and Jiang Liu</p><div class="work-actions"><a href="https://doi.org/10.1007/978-3-032-10351-2_1" target="_blank" rel="noopener noreferrer">Paper</a><button class="details-toggle cursor-interaction" type="button" aria-expanded="false" aria-controls="jialin-dvia-details">Details <span class="toggle-mark" aria-hidden="true">+</span></button></div><div class="details-panel" id="jialin-dvia-details" inert><div class="details-inner"><div class="details-copy"><p>Combines iris motion with stationary angle structures from dark/light key frames to distinguish open, appositional, and synechial angles.</p><figure class="detail-figure"><img id="jialin-dvia-figure" alt="Open, appositional, and synechial angle examples under dark and light conditions from the DVIA-Net paper." width="1600" decoding="async" src="./images/dvia-detail.webp"></figure><p>Evaluated on 1,304 half-angle videos from 205 patients (326 eyes), with eye-level train/validation/test separation. DVIA-Net achieved 82.2% balanced accuracy on the 256-video test set.</p></div></div></div></div></article><article class="work secondary"><figure class="research-image"><div class="paper-frame"><img class="paper-image" data-source-figure="jialin-obu-figure" alt="Ophthalmic input, ground truth, and early-training online uncertainty maps from OBU-Net." width="840" decoding="async" src="./images/obu-thumb.webp"></div><figcaption><span>OBU-Net</span></figcaption></figure><div class="work-body"><div class="publication"><span class="venue">IEEE Journal of Biomedical and Health Informatics · 2025</span></div><h3>Online Bayesian Approximation Based Uncertainty Aware Model for Ophthalmic Image Segmentation</h3><p class="authors">Yinglin Zhang, Risa Higashita, Lingxi Zeng, <strong>Jialin Li</strong>, Ruiling Xi, Tianhang Liu, Huazhu Fu, Dave Towey, Ruibin Bai, and Jiang Liu</p><div class="work-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/40742832/" target="_blank" rel="noopener noreferrer">Paper</a><button class="details-toggle cursor-interaction" type="button" aria-expanded="false" aria-controls="jialin-obu-details">Details <span class="toggle-mark" aria-hidden="true">+</span></button></div><div class="details-panel" id="jialin-obu-details" inert><div class="details-inner"><div class="details-copy"><p>OBU-Net updates spatial uncertainty maps during training to focus on ambiguous regions and fuse multi-scale segmentation predictions using pixel-wise confidence.</p><figure class="detail-figure"><img id="jialin-obu-figure" alt="OBU-Net input image, ground truth, online uncertainty maps, and segmentation predictions at training epochs 0, 10, 30, 50, and 90." width="1600" decoding="async" src="./images/obu-detail.webp"></figure><p>Evaluated on six ophthalmic datasets: TM-EM3000, Rodrep, CORN-1, GOALS, FIVES, and MSCAS2. The study also examines robustness through metamorphic testing and uses an image-level uncertainty score to assess segmentation reliability.</p></div></div></div></div></article></section>
+    
+    <section class="honors" aria-labelledby="jialin-honors-heading" id="jialin-honors"><div class="section-heading"><h2 id="jialin-honors-heading">Honors &amp; funding</h2></div>
+<div class="honor">
+  <time>Oct. 2025–Oct. 2026</time>
+  <div class="honor-body">
+    <h3>Special Funds for the Cultivation of Guangdong College Students’ Scientific and Technological Innovation</h3>
+    <p>Principal investigator · RMB 10,000 research grant</p>
+  </div>
+</div>
+<div class="honor">
+  <time>Jul. 2026</time>
+  <div class="honor-body">
+    <h3>HKUST School of Engineering Summer Camp for Elite Students 2026</h3>
+    <p>Selected participant · Fully funded</p>
+  </div>
+</div>
+</section>
+    <footer class="footer"><span>Jialin Li · Shenzhen, China</span><a class="email-address" href="mailto:12311313@mail.sustech.edu.cn">12311313@mail.sustech.edu.cn</a></footer>
+  </main>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('jialin-homepage');
+  root.querySelectorAll('.paper-image[data-source-figure]').forEach(image => {
+    if (!image.getAttribute('src')) image.src = root.querySelector('#' + image.dataset.sourceFigure).src;
+  });
+  const toggles = root.querySelectorAll('.details-toggle');
+  const saved = window.openai?.widgetState?.privateContent?.details || {};
+  function applyDetails(button, expanded) {
+    const panel = root.querySelector('#' + button.getAttribute('aria-controls'));
+    button.setAttribute('aria-expanded', String(expanded));
+    panel.classList.toggle('open', expanded);
+    panel.inert = !expanded;
+  }
+  toggles.forEach(button => {
+    applyDetails(button, Boolean(saved[button.getAttribute('aria-controls')]));
+    button.addEventListener('click', () => {
+      applyDetails(button, button.getAttribute('aria-expanded') !== 'true');
+      const details = {};
+      toggles.forEach(item => { details[item.getAttribute('aria-controls')] = item.getAttribute('aria-expanded') === 'true'; });
+      window.openai?.setWidgetState?.({ modelContent: { site: 'Jialin Li', layout: 'Academic Swiss layout; 12-column grid; black, white and #B51F35; Roboto 400/700; restrained type scale', content: 'SCL-Net, DVIA-Net, OBU-Net, anatomy-preserving prediction' }, privateContent: { details } })?.catch(() => {});
+    });
+  });
+  window.addEventListener('openai:set_globals', event => {
+    const state = event.detail?.globals?.widgetState?.privateContent?.details;
+    if (state) toggles.forEach(button => applyDetails(button, Boolean(state[button.getAttribute('aria-controls')])));
+  });
+  const design = { spacing: 1, nameSize: 56 };
+  function renderDesign() {
+    root.style.setProperty('--jl-space', String(design.spacing));
+    root.style.setProperty('--jl-name-size', design.nameSize + 'px');
+  }
+  renderDesign();
+  if (globalThis.Tweak) {
+    const tweaks = new Tweak({ container: root, onChange: renderDesign });
+    tweaks.addSlider(design, 'spacing', { label: '纵向留白', min: 0.85, max: 1.2, step: 0.05, reference: '--jl-space' });
+    tweaks.addSlider(design, 'nameSize', { label: '姓名字号', min: 44, max: 64, step: 2, unit: 'px', reference: '--jl-name-size' });
+  }
+})();
+</script>
+
+</body>
+</html>
