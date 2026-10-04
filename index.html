@@ -58,6 +58,17 @@
 #jialin-homepage .wordmark { grid-column: 1 / 4; font-weight: 700; }
 #jialin-homepage .top-meta { grid-column: 5 / 7; }
 #jialin-homepage .navigation { grid-column: 5 / 13; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 28px; }
+#jialin-homepage .theme-preview { margin-top: 20px; font-size: 12px; }
+#jialin-homepage .theme-preview summary { width: fit-content; cursor: pointer; }
+#jialin-homepage .theme-current { margin-left: 12px; font-weight: 700; }
+#jialin-homepage .theme-options { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+#jialin-homepage .theme-choice { display: inline-flex; align-items: center; gap: 7px; padding: 6px 8px; border: 1px solid transparent; white-space: nowrap; cursor: pointer; }
+#jialin-homepage .theme-choice[aria-pressed="true"] { border-color: var(--ink); }
+#jialin-homepage .theme-swatch { display: block; width: 12px; height: 12px; background: var(--swatch); }
+#jialin-homepage .theme-custom { display: inline-flex; align-items: center; gap: 8px; }
+#jialin-homepage .theme-picker { width: 30px; height: 30px; padding: 0; border: 0; background: var(--paper); cursor: pointer; }
+#jialin-homepage .theme-hex { width: 88px; padding: 5px 6px; font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--ink); border-radius: 0; }
+#jialin-homepage .theme-hint { margin-top: 7px !important; }
 #jialin-homepage .hero { align-items: start; margin: calc(32px * var(--jl-space)) 0 calc(52px * var(--jl-space)); }
 #jialin-homepage .portrait { grid-column: 1 / 4; width: 100%; padding-top: 8px; }
 #jialin-homepage .portrait-space { aspect-ratio: 4 / 5; background: var(--paper); border: 1px solid var(--ink); overflow: hidden; }
@@ -188,6 +199,8 @@
   #jialin-homepage .secondary h3 { overflow-wrap: anywhere; }
 }
 @media (pointer: coarse) {
+  #jialin-homepage .theme-picker { min-width: 44px; min-height: 44px; }
+  #jialin-homepage .theme-hex { min-height: 44px; font-size: 16px; }
   #jialin-homepage .navigation a, #jialin-homepage .profile-links a,
   #jialin-homepage .work-actions a, #jialin-homepage button { min-height: 44px; display: inline-flex; align-items: center; }
 }
@@ -198,7 +211,20 @@
 </style>
 <div id="jialin-homepage" aria-label="Jialin Li academic homepage">
   <main class="homepage">
-    <div class="topbar"><span class="wordmark">Jialin Li</span><nav class="navigation" aria-label="Main navigation"><a href="#jialin-research">Research</a><a href="#jialin-honors">Honors</a><a href="mailto:12311313@mail.sustech.edu.cn">Contact</a></nav></div>
+    <div class="topbar"><span class="wordmark">Jialin Li</span><nav class="navigation" aria-label="Main navigation"><a href="#jialin-research">Research</a><a href="#jialin-honors">Honors</a><a href="mailto:12311313@mail.sustech.edu.cn">Contact</a></nav></div><details class="theme-preview" open>
+  <summary>临时配色 <span class="theme-current">#C81D3A</span></summary>
+  <div class="theme-options" role="group" aria-label="主题色预览">
+    <button class="theme-choice" type="button" data-accent="#C81D3A" aria-pressed="true"><span class="theme-swatch" style="--swatch: #C81D3A" aria-hidden="true"></span>#C81D3A</button>
+    <button class="theme-choice" type="button" data-accent="#9E2A2B" aria-pressed="false"><span class="theme-swatch" style="--swatch: #9E2A2B" aria-hidden="true"></span>#9E2A2B</button>
+    <button class="theme-choice" type="button" data-accent="#8B1E2D" aria-pressed="false"><span class="theme-swatch" style="--swatch: #8B1E2D" aria-hidden="true"></span>#8B1E2D</button>
+    <button class="theme-choice" type="button" data-accent="#B51F35" aria-pressed="false"><span class="theme-swatch" style="--swatch: #B51F35" aria-hidden="true"></span>#B51F35</button>
+    <button class="theme-choice" type="button" data-accent="#5582B9" aria-pressed="false"><span class="theme-swatch" style="--swatch: #5582B9" aria-hidden="true"></span>#5582B9</button>
+    <button class="theme-choice" type="button" data-accent="#7985B5" aria-pressed="false"><span class="theme-swatch" style="--swatch: #7985B5" aria-hidden="true"></span>#7985B5</button>
+    <label class="theme-custom">自定义 <input class="theme-picker" type="color" value="#C81D3A" aria-label="自定义主题色"></label>
+    <input class="theme-hex" type="text" value="#C81D3A" maxlength="7" pattern="#[0-9A-Fa-f]{6}" aria-label="主题色 HEX 色值" spellcheck="false" autocomplete="off">
+  </div>
+  <p class="theme-hint">仅在你的浏览器中预览，可收起。</p>
+</details>
     <header class="hero">
       <figure class="portrait" aria-label="Portrait of Jialin Li"><div class="portrait-space"><img class="portrait-photo" alt="Jialin Li" width="480" height="454" decoding="async" src="./images/portrait-white.webp"></div><div class="profile-links"><a href="mailto:12311313@mail.sustech.edu.cn"><img class="link-icon" src="./icons/mail.svg" alt="" aria-hidden="true" width="16" height="16"><span>Email</span></a><a class="cv-download" href="./cv.pdf" download="Jialin-Li-CV.pdf"><img class="link-icon" src="./icons/file-text.svg" alt="" aria-hidden="true" width="16" height="16"><span>CV</span></a></div><figcaption></figcaption></figure>
       <div class="hero-copy">
@@ -241,6 +267,41 @@
   });
   const toggles = root.querySelectorAll('.details-toggle');
   const saved = window.openai?.widgetState?.privateContent?.details || {};
+  const storageKey = 'jialin-accent-preview';
+  const colorButtons = root.querySelectorAll('.theme-choice');
+  const colorPicker = root.querySelector('.theme-picker');
+  const hexInput = root.querySelector('.theme-hex');
+  const currentColor = root.querySelector('.theme-current');
+  let accent = '#C81D3A';
+  function saveState() {
+    const details = {};
+    toggles.forEach(item => { details[item.getAttribute('aria-controls')] = item.getAttribute('aria-expanded') === 'true'; });
+    window.openai?.setWidgetState?.({ modelContent: { site: 'Jialin Li', accent, layout: 'Academic Swiss layout; 12-column grid; Roboto 400/700; restrained type scale', content: 'SCL-Net, APSevo, DVIA-Net, OBU-Net' }, privateContent: { details, accent } })?.catch(() => {});
+  }
+  function applyAccent(value, persist = false) {
+    if (typeof value !== 'string' || !/^#[0-9a-f]{6}$/i.test(value)) return;
+    accent = value.toUpperCase();
+    root.style.setProperty('--jl-accent', accent);
+    colorButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.accent === accent)));
+    if (colorPicker) colorPicker.value = accent;
+    if (hexInput) { hexInput.value = accent; hexInput.removeAttribute('aria-invalid'); }
+    if (currentColor) currentColor.textContent = accent;
+    if (persist) {
+      try { localStorage.setItem(storageKey, accent); } catch {}
+      saveState();
+    }
+  }
+  let storedAccent;
+  try { storedAccent = localStorage.getItem(storageKey); } catch {}
+  applyAccent(window.openai?.widgetState?.privateContent?.accent || storedAccent || accent);
+  colorButtons.forEach(button => button.addEventListener('click', () => applyAccent(button.dataset.accent, true)));
+  colorPicker?.addEventListener('input', () => applyAccent(colorPicker.value, true));
+  hexInput?.addEventListener('input', () => {
+    const valid = /^#[0-9a-f]{6}$/i.test(hexInput.value);
+    hexInput.setAttribute('aria-invalid', String(!valid));
+    if (valid) applyAccent(hexInput.value, true);
+  });
+  hexInput?.addEventListener('change', () => applyAccent(accent));
   function applyDetails(button, expanded) {
     const panel = root.querySelector('#' + button.getAttribute('aria-controls'));
     button.setAttribute('aria-expanded', String(expanded));
@@ -251,14 +312,14 @@
     applyDetails(button, Boolean(saved[button.getAttribute('aria-controls')]));
     button.addEventListener('click', () => {
       applyDetails(button, button.getAttribute('aria-expanded') !== 'true');
-      const details = {};
-      toggles.forEach(item => { details[item.getAttribute('aria-controls')] = item.getAttribute('aria-expanded') === 'true'; });
-      window.openai?.setWidgetState?.({ modelContent: { site: 'Jialin Li', layout: 'Academic Swiss layout; 12-column grid; black, white and #C81D3A; Roboto 400/700; restrained type scale', content: 'SCL-Net, DVIA-Net, OBU-Net, anatomy-preserving prediction' }, privateContent: { details } })?.catch(() => {});
+      saveState();
     });
   });
   window.addEventListener('openai:set_globals', event => {
     const state = event.detail?.globals?.widgetState?.privateContent?.details;
     if (state) toggles.forEach(button => applyDetails(button, Boolean(state[button.getAttribute('aria-controls')])));
+    const color = event.detail?.globals?.widgetState?.privateContent?.accent;
+    if (color) applyAccent(color);
   });
   const design = { spacing: 1, nameSize: 56 };
   function renderDesign() {
