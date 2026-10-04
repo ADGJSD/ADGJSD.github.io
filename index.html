@@ -67,12 +67,14 @@
 #jialin-homepage .portrait figcaption { display: none; }
 #jialin-homepage .hero-copy { grid-column: 5 / 13; display: grid; grid-template-columns: subgrid; row-gap: 14px; min-width: 0; }
 #jialin-homepage .hero h1 { grid-column: 1 / -1; font-size: clamp(44px, 5.5vw, var(--jl-name-size)); font-weight: 700; line-height: 1.08; letter-spacing: -.03em; }
-#jialin-homepage .name-accent { color: var(--jl-accent); }
+#jialin-homepage .name-accent { display: inline-block; position: relative; color: var(--ink); }
+#jialin-homepage .name-accent::after { content: "i"; position: absolute; inset: 0; color: var(--jl-accent); clip-path: inset(0 0 68% 0); pointer-events: none; }
 #jialin-homepage .research-focus { grid-column: 1 / -1; margin-top: 8px !important; font-size: 15px; font-weight: 700; }
 #jialin-homepage .bio { grid-column: 1 / -1; font-size: 15px; line-height: 1.65; }
 #jialin-homepage .bio p + p { margin-top: 13px; }
 #jialin-homepage .bio a { text-decoration: underline; }
 #jialin-homepage .bio .advisor-link { color: var(--jl-accent); text-decoration: none; }
+#jialin-homepage .bio .lab-link { color: var(--jl-accent); text-decoration: none; }
 #jialin-homepage .bio .advisor-link:hover { text-decoration: underline; }
 #jialin-homepage .profile-links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 16px; font-size: 13px; }
 #jialin-homepage .profile-links a { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
@@ -200,11 +202,11 @@
     <header class="hero">
       <figure class="portrait" aria-label="Portrait of Jialin Li"><div class="portrait-space"><img class="portrait-photo" alt="Jialin Li" width="480" height="454" decoding="async" src="./images/portrait-white.webp"></div><div class="profile-links"><a href="mailto:12311313@mail.sustech.edu.cn"><img class="link-icon" src="./icons/mail.svg" alt="" aria-hidden="true" width="16" height="16"><span>Email</span></a><a class="cv-download" href="./cv.pdf" download="Jialin-Li-CV.pdf"><img class="link-icon" src="./icons/file-text.svg" alt="" aria-hidden="true" width="16" height="16"><span>CV</span></a></div><figcaption></figcaption></figure>
       <div class="hero-copy">
-        <h1>Jialin L<span class="name-accent">i</span></h1>
+        <h1 aria-label="Jialin Li">Jialin L<span class="name-accent">i</span></h1>
         
         <p class="research-focus">Computer vision · Medical image analysis · World models.</p>
         <div class="bio">
-<p>I am an undergraduate in Computer Science and Technology at the <strong>Southern University of Science and Technology (SUSTech)</strong>. I work with <a class="advisor-link" href="https://faculty.sustech.edu.cn/liuj/en/" target="_blank" rel="noopener noreferrer">Prof. Jiang Liu</a> at <a href="https://www.imed-lab.com/" target="_blank" rel="noopener noreferrer">iMED Lab</a>, and am a remote research intern with <a class="advisor-link" href="https://ece.hkust.edu.hk/eexmli" target="_blank" rel="noopener noreferrer">Prof. Xiaomeng Li</a> at the Hong Kong University of Science and Technology (HKUST).</p>
+<p>I am an undergraduate in Computer Science and Technology at the <strong>Southern University of Science and Technology</strong>. I work with <a class="advisor-link" href="https://faculty.sustech.edu.cn/liuj/en/" target="_blank" rel="noopener noreferrer">Prof. Jiang Liu</a> at <a class="lab-link" href="https://www.imed-lab.com/" target="_blank" rel="noopener noreferrer">iMED Lab</a>, and am a remote research intern with <a class="advisor-link" href="https://ece.hkust.edu.hk/eexmli" target="_blank" rel="noopener noreferrer">Prof. Xiaomeng Li</a> at the Hong Kong University of Science and Technology.</p>
 <p>I am currently interested in world models, particularly learning representations of dynamics and predicting how the physical world evolves.</p>
 </div>
         
