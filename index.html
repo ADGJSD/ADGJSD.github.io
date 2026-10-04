@@ -25,7 +25,7 @@
   src: url("./fonts/roboto-bold.woff2") format("woff2");
   font-style: normal; font-weight: 700; font-display: swap;
 }
-#jialin-homepage { --jl-accent: #B51F35; --jl-space: 1; --jl-name-size: 56px; }
+#jialin-homepage { --jl-accent: #C81D3A; --jl-space: 1; --jl-name-size: 56px; }
 #jialin-homepage .homepage {
   color-scheme: light;
   --paper: #ffffff; --ink: #000000; --gutter: 24px;
@@ -253,7 +253,7 @@
       applyDetails(button, button.getAttribute('aria-expanded') !== 'true');
       const details = {};
       toggles.forEach(item => { details[item.getAttribute('aria-controls')] = item.getAttribute('aria-expanded') === 'true'; });
-      window.openai?.setWidgetState?.({ modelContent: { site: 'Jialin Li', layout: 'Academic Swiss layout; 12-column grid; black, white and #B51F35; Roboto 400/700; restrained type scale', content: 'SCL-Net, DVIA-Net, OBU-Net, anatomy-preserving prediction' }, privateContent: { details } })?.catch(() => {});
+      window.openai?.setWidgetState?.({ modelContent: { site: 'Jialin Li', layout: 'Academic Swiss layout; 12-column grid; black, white and #C81D3A; Roboto 400/700; restrained type scale', content: 'SCL-Net, DVIA-Net, OBU-Net, anatomy-preserving prediction' }, privateContent: { details } })?.catch(() => {});
     });
   });
   window.addEventListener('openai:set_globals', event => {
