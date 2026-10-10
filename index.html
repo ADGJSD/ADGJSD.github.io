@@ -6,6 +6,8 @@
   <meta name="description" content="Jialin Li, Computer Science undergraduate at SUSTech, working with iMED Lab and HKUST. Interests in computer vision, medical image analysis, and world-model dynamics.">
   <meta name="theme-color" content="#ffffff">
   <title>Jialin Li</title>
+  <link rel="preload" href="./fonts/roboto-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/roboto-bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="./icons/bird.svg?v=20261004-side">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="9cf01ee7-231d-4d96-a922-8207ed33e136" data-domains="adgjsd.github.io" data-exclude-hash="true" data-do-not-track="true"></script>
 
@@ -191,6 +193,36 @@
   #jialin-homepage .navigation a, #jialin-homepage .profile-links a,
   #jialin-homepage .work-actions a, #jialin-homepage button { min-height: 44px; display: inline-flex; align-items: center; }
 }
+/* Short, one-shot entrances; content remains visible if scripts are unavailable. */
+@keyframes jialin-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes jialin-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes jialin-unfold {
+  from { opacity: 0; transform: translateY(16px); clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #jialin-homepage .topbar { animation: jialin-fade 360ms ease-out 120ms backwards; }
+  #jialin-homepage .hero h1 { animation: jialin-enter 420ms cubic-bezier(.22, 1, .36, 1) backwards; }
+  #jialin-homepage .portrait,
+  #jialin-homepage .research-focus,
+  #jialin-homepage .bio {
+    animation: jialin-unfold 640ms cubic-bezier(.22, 1, .36, 1) backwards;
+  }
+  #jialin-homepage .portrait { animation-delay: 720ms; }
+  #jialin-homepage .research-focus { animation-delay: 780ms; }
+  #jialin-homepage .bio { animation-delay: 860ms; }
+  #jialin-homepage .portrait:focus-within,
+  #jialin-homepage .bio:focus-within { animation: none; }
+}
+@media print {
+  #jialin-homepage * { animation: none !important; }
+}
 @media (prefers-reduced-motion: reduce) {
   #jialin-homepage .details-panel, #jialin-homepage .toggle-mark { transition: none; }
 }
@@ -263,6 +295,49 @@
     const state = event.detail?.globals?.widgetState?.privateContent?.details;
     if (state) toggles.forEach(button => applyDetails(button, Boolean(state[button.getAttribute('aria-controls')])));
   });
+
+  // Animate at the viewport edge, without leaving content hidden while waiting
+  // for JavaScript, an observer callback, or a failed network request.
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!motionPreference.matches && 'IntersectionObserver' in window && root.animate) {
+    const introStartedAt = performance.now();
+    const activeEntrances = new Set();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(entry.target);
+        if (motionPreference.matches || entry.target.contains(document.activeElement)) return;
+        const introDelay = !location.hash && window.scrollY === 0
+          ? Math.max(0, 1000 + (entry.target.matches('.work') ? 100 : 0) - (performance.now() - introStartedAt))
+          : 0;
+        const animation = entry.target.animate([
+          { opacity: 0, transform: 'translateY(10px)' },
+          { opacity: 1, transform: 'translateY(0)' }
+        ], { duration: 480, delay: introDelay, fill: 'backwards', easing: 'cubic-bezier(.22, 1, .36, 1)' });
+        activeEntrances.add(animation);
+        animation.finished.then(() => activeEntrances.delete(animation), () => activeEntrances.delete(animation));
+      });
+    }, { threshold: 0, rootMargin: '0px 0px 32px 0px' });
+    root.querySelectorAll('.section-heading, .work, .honor, .footer').forEach(element => {
+      // Direct anchors and restored scroll positions should be readable immediately.
+      if (element.getBoundingClientRect().top < window.innerHeight && (location.hash || window.scrollY > 0)) return;
+      observer.observe(element);
+    });
+    const finishEntrances = () => {
+      activeEntrances.forEach(animation => animation.cancel());
+      activeEntrances.clear();
+    };
+    root.addEventListener('focusin', finishEntrances);
+    window.addEventListener('hashchange', () => { observer.disconnect(); finishEntrances(); });
+    window.addEventListener('beforeprint', finishEntrances);
+    window.addEventListener('pageshow', event => { if (event.persisted) finishEntrances(); });
+    motionPreference.addEventListener('change', event => {
+      if (event.matches) {
+        observer.disconnect();
+        finishEntrances();
+      }
+    });
+  }
 })();
 </script>
 
